@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .box {
+            width: 50px;
+            height: 50px;
+            background-color: green;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -25px;
+            margin-left: -25px;
+            transition: 1s;
+        }
+
+        .box1 {
+            width: 50px;
+            height: 50px;
+            background-color: blue;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -25px;
+            margin-left: -25px;
+            transition: 1s;
+        }
+
+        .item {
+            width: 50px;
+            height: 50px;
+            border: 1px solid #333;
+        }
+
+        .row {
+            display: flex;
+            justify-content: center;
+        }
+
+        .pad {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .target {
+            height: 50px;
+            width: 50px;
+            background-color: red;
+            border-radius: 50%;
+            border: 10px double white;
+            position: absolute;
+            margin-left: -25px;
+            margin-top: -25px;
+            display: none;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box" id="box"></div>
+    <div class="box1" id="box1"></div>
+    <div class="target" id="target"></div>
+    <div class="pad">
+        <div class="row">
+            <div class="item" id="topBtn"></div>
+        </div>
+        <div class="row">
+            <div class="item" id="leftBtn"></div>
+            <div class="item"></div>
+            <div class="item" id="rightBtn"></div>
+        </div>
+        <div class="row">
+            <div class="item" id="bottomBtn"></div>
+        </div>
+    </div>
+    <script>
+        let topPos = 50;
+        let leftPos = 50;
+        let topPos1 = 50;
+        let leftPos1 = 50;
+        let topTargetPos = Math.floor(Math.random() * 100);
+        let leftTargetPos = Math.floor(Math.random() * 100);
+
+        target.style.top = topTargetPos + '%';
+        target.style.left = leftTargetPos + '%';
+
+        topBtn.onclick = function() {
+            topPos -= 1;
+            box.style.top = topPos + '%';
+        }
+
+        bottomBtn.onclick = function() {
+            topPos += 1;
+            box.style.top = topPos + '%';
+        }
+
+        leftBtn.onclick = function() {
+            leftPos -= 1;
+            box.style.left = leftPos + '%';
+        }
+        rightBtn.onclick = function() {
+            leftPos += 1;
+            box.style.left = leftPos + '%';
+        }
+
+        document.body.onkeydown = function(e) {
+            checkWinner();
+            console.log(e.keyCode);
+            if (e.keyCode == 38) {
+                topPos -= 1;
+                box.style.top = topPos + '%';
+
+                topBtn.style.backgroundColor = 'grey';
+            } else if (e.keyCode == 40) {
+                topPos += 1;
+                box.style.top = topPos + '%';
+
+                bottomBtn.style.backgroundColor = 'grey';
+            } else if (e.keyCode == 37) {
+                leftPos -= 1;
+                box.style.left = leftPos + '%';
+
+                leftBtn.style.backgroundColor = 'grey';
+            } else if (e.keyCode == 39) {
+                leftPos += 1;
+                box.style.left = leftPos + '%';
+
+                rightBtn.style.backgroundColor = 'grey';
+            } else if (e.keyCode == 87) {
+                topPos1 -= 1;
+                box1.style.top = topPos1 + '%';
+            } else if (e.keyCode == 83) {
+                topPos1 += 1;
+                box1.style.top = topPos1 + '%';
+            } else if (e.keyCode == 65) {
+                leftPos1 -= 1;
+                box1.style.left = leftPos1 + '%';
+            } else if (e.keyCode == 68) {
+                leftPos1 += 1;
+                box1.style.left = leftPos1 + '%';
+            }
+
+        }
+
+        document.body.onkeyup = function(e) {
+            if (e.keyCode == 38) {
+                topBtn.style.backgroundColor = 'white';
+            } else if (e.keyCode == 40) {
+                bottomBtn.style.backgroundColor = 'white';
+            } else if (e.keyCode == 37) {
+                leftBtn.style.backgroundColor = 'white';
+            } else if (e.keyCode == 39) {
+                rightBtn.style.backgroundColor = 'white';
+            }
+        }
+
+        setTimeout(function(){
+            target.style.display = 'block';
+        },5000)
+
+
+        function checkWinner() {
+            if (topTargetPos == topPos && leftTargetPos == leftPos) {
+                alert(' Winner is green');
+            }else if(topTargetPos == topPos1 && leftTargetPos == leftPos1){
+                alert(' Winner is blue');
+            }
+        }
+    </script>
+</body></html>
