@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Porfolio</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100vh;
+           background-color:rgb(68, 68, 68);
+        }
+
+        .sideBar {
+            width: 25%;
+            height: 100vh;
+            background-color: #000;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: 0.8s;
+            display: flex;
+            flex-direction: column;
+            padding: 50px 0;
+            align-items: center;
+        }
+
+        .content {
+            width: 75%;
+            height: 100vh;
+            /* background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
+        background-color: #74EBD5;
+        background-image: linear-gradient(90deg, #74EBD5 0%, #9FACE6 100%);
+            position: absolute;
+            left: 25%;
+            top: 0;
+            transition: 0.8s;
+        }
+
+        .btn {
+            width: 50px;
+            height: 50px;
+            background-color: black;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .btnSpace {
+            height: 10vh;
+            display: flex;
+            align-items: center;
+            padding-left: 15px;
+        }
+
+        .contentSpace {
+            width: 100%;
+            height: 90vh;
+            /* background-color: #0093E9;
+background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%); */
+
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
+        }
+
+        .row {
+            width: 80%;
+            height: 2px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        .logo {
+            width: 150px;
+            height: 150px;
+            background-image: url("ava5.jpg");
+            background-size: cover;
+            border-radius: 50%;
+        }
+
+        .name {
+            color: #fff;
+            margin-top: 20px;
+            font-size: 26px;
+            font-family: Montserrat;
+            font-weight: 900;
+        }
+
+        .position {
+            color: #fff;
+            margin-top: 10px;
+            font-size: 14px;
+            font-family: Montserrat;
+        }
+
+        .nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .nav a {
+            font-weight: bold;
+            color: #fff;
+            text-decoration: none;
+            padding: 20px 0;
+            width: 30%;
+            text-align: center;
+            font-family: Montserrat;
+            position: relative;
+
+            background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+            background-repeat: no-repeat;
+            background-size: auto .2rem;
+            background-position: bottom;
+            transition: ease-in-out .3s;
+        }
+        .nav a:hover{
+            font-weight: bold;
+            color: #000;
+            font-weight: bold;
+            background-size: auto 100%;
+        }
+        .page {
+            display: none;
+        }
+        .social{
+            width: 50%;
+            display: flex;
+            justify-content: space-around;
+            margin-top: 60px;
+        }
+        .ico{
+            width: 50px;
+            height: 50px;
+            background-color: white;
+            border-radius: 20%;
+        }
+        
+        .instagram{
+            background-size: cover;
+            padding: 3px;
+        }
+        .instagram:hover {
+            position: relative;
+            bottom: 5px;
+            transition: 2s ease-in-out .5s;
+        }
+        .telegram{  
+            background-size: cover;
+        }
+        .telegram:hover {
+            position: relative;
+            bottom: 5px;
+            transition: 2s ease-in-out .5s;
+        }
+        .github{
+            background-size: cover;
+        }
+        .github:hover {
+            position: relative;
+            bottom: 5px;
+            transition: 2s ease-in-out .5s;
+        }
+        .version{
+            color: #fff;
+            margin-left: 35vh;
+            margin-top: 15vh;
+        }
+
+	
+
+
+        /* skills */
+        @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,600);
+        .container {
+            margin-left: 70vh;
+            margin-top: 10%;
+        }
+
+
+        .title {
+        font-weight: bold;
+        font-size: 20px;
+        color: #db3a34;
+        }
+
+        .bar {
+        width: 500px;
+        height: 35px;
+        background: #fff;
+        border-radius: 12px;
+        position: relative;
+        transition: all 2s linear;
+        }
+
+        .bar-1,
+        .my-skills {
+        width: 80%;
+        margin: 10px auto 25px;
+        }
+
+        .bar-inner {
+        width: 0;
+        height: 35px;
+        line-height: 35px;
+        background: #db3a34;
+        border-radius: 10px 0 0 10px;
+        }
+
+        .bar-percent {
+        position: absolute;
+        right: 10px;
+        top: 5px;
+        font-size: 18px;
+        }
+        /* btn */
+
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
+        input[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 80px;
+        width: 300px;
+        z-index: 100;
+        margin-left: 85vh;
+        }
+
+        .nm {
+        margin-left: 85vh;
+        height: 80px;
+        width: 300px;
+        background: #18191f;
+        color: #555;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 46px;
+        cursor: pointer;
+        border-radius: 20px;
+        box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05),
+        4px 4px 6px rgba(0, 0, 0, 0.2),
+        inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+        inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+
+        input[type="checkbox"]:checked ~ .nm {
+        box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.05),
+            inset 4px 4px 6px rgba(0, 0, 0, 0.2);
+        color: yellow;
+        text-shadow: 0 0 15px yellow, 0 0 25px yellow;
+        animation: glow 1.5s linear infinite;
+        }
+
+        @keyframes glow {
+        0% {
+            filter: hue-rotate(0deg);
+        }
+        100% {
+            filter: hue-rotate(360deg);
+        }
+        }
+        
+
+
+
+/* proekt */
+:root {
+  --surface-color: #fff;
+  --curve: 40;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin: 4rem 5vw;
+  padding: 0;
+  list-style-type: none;
+  margin-left: 35%;
+  margin-top: -1%;
+}
+
+.card {
+  position: relative;
+  display: block;
+  height: 100%;  
+  border-radius: calc(var(--curve) * 1px);
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.card__image {      
+  width: 100%;
+  height: auto;
+}
+
+.card__overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;      
+  border-radius: calc(var(--curve) * 1px);    
+  background-color: var(--surface-color);      
+  transform: translateY(100%);
+  transition: .2s ease-in-out;
+}
+
+.card:hover .card__overlay {
+  transform: translateY(0);
+}
+
+.card__header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 32px;
+  border-radius: calc(var(--curve) * 1px) 0 0 0;    
+  background-color: var(--surface-color);
+  transform: translateY(-100%);
+  transition: .2s ease-in-out;
+}
+
+.card__arc {
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  bottom: 100%;
+  right: 0;      
+  z-index: 1;
+}
+
+.card__arc path {
+  fill: var(--surface-color);
+  d: path("M 40 80 c 22 0 40 -22 40 -40 v 40 Z");
+}       
+
+.card:hover .card__header {
+  transform: translateY(0);
+}
+
+.card__thumb {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;      
+  border-radius: 50%;      
+}
+
+.card__title {
+  font-size: 16px;
+  margin: 0 0 .3em;
+  color: #6A515E;
+}
+
+.card__tagline {
+  display: block;
+  margin: 16px 0;
+  font-family: "MockFlowFont";  
+  font-size: .8em; 
+  color: #D7BDCA;  
+}
+
+.card__status {
+  font-size: .8em;
+  color: #D7BDCA;
+}
+
+.card__description {
+  padding: 0 32px 32px;
+  margin: 0;
+  color: #D7BDCA;
+  font-family: "MockFlowFont";   
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}    
+
+
+/* about */
+.ava{
+    max-width: 25%;
+    margin-left: 10vh;
+    border: 2px solid #141414;
+    border-radius: 4px;
+    box-shadow: 0 30px 60px -12px rgba(50, 50, 93, 0.25), 0 18px 36px -18px rgba(0, 0, 0, 0.3), 0 -12px 36px -8px rgba(0, 0, 0, 0.025);
+    border-radius: 5px;
+    margin-top: 30px;
+}
+
+.session-title .he {
+    width: 100%;
+    text-align: center;
+    font-family: "Open Sans", sans-serif;
+    font-size: 600;
+}
+.about-sestion .pe {
+    font-size: .95rem;
+    margin-bottom: 15px;
+    line-height: 27px;
+    margin-left: 40vh;
+}
+.session-title .pe {
+    max-width: 850px;
+    text-align: center;
+    float: none;
+    margin: auto;
+    font-size: .83rem;
+    margin-top: 15px;
+    margin-left: 10vh;
+}
+
+.about-sestion {
+
+padding: 50px;
+}
+
+@media screen and (max-width: 940px) {
+.about-sestion {
+    padding: 30px 10px;
+}
+}
+    </style>
+
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="sideBar" id="sideBar">
+            <div class="logo"></div>
+            <div class="name">Denys Dzikovskyi</div>
+            <div class="position">Front-end developer</div>
+            <div class="nav">
+                <a href="#" class="item" id="about">About</a>
+                <a href="#" class="item" id="project">Projects</a>
+                <a href="#" class="item" id="skills">Skills</a>
+                <a href="#" class="item" id="cv">CV download</a>
+                <a href="#" class="item" id="collab">Collaborations</a>
+            </div>
+            
+            <div class="social">
+                <a href="https://www.instagram.com/dzikov_5" target="_blank"><img  class="ico instagram" src="instagram.png"></a>
+                <a href="https://web.telegram.org/#/im?p=@dzikov_5" target="_blank"><img class="ico telegram" src="telegram.png"></a>
+                <a href="https://github.com/DenysDzikov" target="_blank"><img class="ico github" src="github.png"></a>
+            </div>
+
+            <div class="version">
+                <p>V.3.1.4</p>
+            </div>
+
+        </div>
+
+        <div class="content" id="content">
+            <div class="btnSpace">
+                <div class="btn" id="btn">
+                    <div class="row"></div>
+                    <div class="row"></div>
+                    <div class="row"></div>
+                </div>
+            </div>
+            <div class="contentSpace">
+                <div class="page1" id="aboutPage">
+                    <div class="session-title">
+                      <h2 class="he">About Me</h2>
+                      <p class="pe">Привіт! Мене звати Денис, мені 17 років.</p>
+                  </div>
+                  
+                  <div class="about-row">
+                      <div class="col-md-5 myphoto">
+                          <img src="avar.jpg" alt="" class="ava">
+                      </div>
+                      <div class="col-md-7">
+                          <p class="pe">Я проживаю в місті Новояворівську. Навчаюсь в коледжі телекомунікацій та комп'ютерних технологій.</p>
+                          <p class="pe">Програмуванню навчаюсь в Creator Academy.
+                              Там я вивчив HTML, CSS, JavaScript, Python,С,Java.</p>
+      
+    
+                    </div>
+                </div>
+                </div>
+                <div class="page" id="projectPage">
+                    <ul class="cards">
+                        <li>
+                          <a href="mono/index (8).html" class="card">
+                            <img src="mono6.jpg" class="card__image" alt="" />
+                            <div class="card__overlay">
+                              <div class="card__header">
+                                <svg class="card__arc" xmlns=""><path /></svg>                     
+                                <!-- <img class="card__thumb" src="" alt="" /> -->
+                                <div class="card__header-text">
+                                  <h3 class="card__title">Monobank cards</h3>            
+                                  <span class="card__status">1 days ago</span>
+                                </div>
+                              </div>
+                              <p class="card__description">Monobank bank in the phone. The first mobile bank in Ukraine.</p>
+                            </div>
+                          </a>      
+                        </li>
+                        <li>
+                          <a href="Weather/index.html" class="card">
+                            <img src="cloudy.png" class="card__image" alt="" />
+                            <div class="card__overlay">        
+                              <div class="card__header">
+                                <svg class="card__arc" xmlns=""><path /></svg>                 
+                                <!-- <img class="card__thumb" src="" alt="" /> -->
+                                <div class="card__header-text">
+                                  <h3 class="card__title">Weather</h3>
+                                  <span class="card__status">3 days ago</span>
+                                </div>
+                              </div>
+                              <p class="card__description">This site will easily help you check the weather in your city</p>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="1vs1/index.html" class="card">
+                            <img src="vs1.jpg" class="card__image" alt="" />
+                            <div class="card__overlay">
+                              <div class="card__header">
+                                <svg class="card__arc" xmlns=""><path /></svg>                     
+                                <!-- <img class="card__thumb" src="" alt="" /> -->
+                                <div class="card__header-text">
+                                  <h3 class="card__title">1VS1</h3>          
+                                  <span class="card__status">7 days ago</span>
+                                </div>
+                              </div>
+                              <p class="card__description">On this site you can play a fun game with a friend on one device</p>
+                            </div>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="chat/index.html" class="card">
+                            <img src="chat6.png" class="card__image" alt="" />
+                            <div class="card__overlay">
+                              <div class="card__header">
+                                <svg class="card__arc" xmlns=""><path /></svg>                 
+                                <!-- <img class="card__thumb" src="" alt="" /> -->
+                                <div class="card__header-text">
+                                  <h3 class="card__title">Live chat</h3>
+                                  <span class="card__status">3 hours ago</span>
+                                </div>          
+                              </div>
+                              <p class="card__description">Online chat to chat with friends</p>
+                            </div>
+                          </a>
+                        </li>    
+                      </ul>
+                </div>
+                <div class="page" id="skillsPage">
+                   <div class="scl">
+                    <input type="checkbox">
+                    <div class="nm">My Skills</div>
+                    <div class="cont">
+                    <div class="container">
+                      <div class="bar-1">
+                      <div class="title">HTML</div>
+                      <div class="bar" data-width="80%">
+                        <div class="bar-inner">
+                          
+                        </div>
+                        <div class="bar-percent">80%</div>
+                      </div>
+                      </div>
+                      <div class="bar-1">
+                      <div class="title" style="color: #084c61;">CSS</div>
+                      <div class="bar" data-width="75%">
+                        <div class="bar-inner" style="background: #084c61;">
+                          
+                        </div>
+                        <div class="bar-percent">75%</div>
+                      </div>
+                      
+                      </div>
+                      <div class="bar-1">
+                      <div class="title" style="color: #525252;">JavaScript</div>
+                      <div class="bar" data-width="65%">
+                        <div class="bar-inner" style="background: #525252;">
+                          
+                        </div>
+                        <div class="bar-percent">65%</div>
+                      </div>
+                      </div>
+                      <div class="bar-1">
+                      <div class="title" style="color: #5a68a5">Node.js</div>
+                      <div class="bar" data-width="5%">
+                        <div class="bar-inner" style="background: #5a68a5;">
+                        </div>
+                        <div class="bar-percent">5%</div>
+                      </div>
+                      </div>
+                    </div>
+                    </div>
+                   </div>
+                </div>
+                <div class="page" id="cvPage">CV</div>
+                <div class="page" id="collabPage">Collaborations</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let click = 0;
+        btn.onclick = function() {
+            if (click == 0) {
+                sideBar.style.left = '-25%';
+                content.style.left = '0';
+                content.style.width = '100%';
+                click = 1;
+            } else if (click == 1) {
+                sideBar.style.left = '0';
+                content.style.left = '25%';
+                content.style.width = '75%';
+                click = 0;
+            }
+        }
+
+        about.onclick = function() {
+            closeOtherSection();
+            aboutPage.style.display = 'flex';
+        }
+        project.onclick = function() {
+            closeOtherSection();
+            projectPage.style.display = 'flex';
+        }
+        skills.onclick = function() {
+            closeOtherSection();
+            skillsPage.style.display = 'flex';
+        }
+        cv.onclick = function() {
+            closeOtherSection();
+            cvPage.style.display = 'flex';
+        }
+        collab.onclick = function() {
+            closeOtherSection();
+            collabPage.style.display = 'flex';
+        }
+
+        function closeOtherSection() {
+            aboutPage.style.display = 'none';
+            projectPage.style.display = 'none';
+            skillsPage.style.display = 'none';
+            cvPage.style.display = 'none';
+            collabPage.style.display = 'none';
+        }
+
+        // skills
+        $(".bar").each(function(){
+  $(this).find(".bar-inner").animate({
+    width: $(this).attr("data-width")
+  },2000)
+});
+    </script>
+</body></html>
