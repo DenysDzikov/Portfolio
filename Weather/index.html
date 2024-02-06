@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Weather app</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgb(240, 111, 15);
+            background: linear-gradient(108deg, rgba(240, 111, 15, 1) 11%, rgba(216, 190, 65, 1) 82%);
+        }
+
+        .card {
+            width: 300px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.09);
+            justify-content: space-around;
+            border-radius: 20px;
+
+        }
+
+        .temp {
+            width: 100%;
+            height: 30%;
+            /*            background-color: royalblue;*/
+        }
+
+        .ico {
+            width: 80px;
+            height: 80px;
+            background-image: url(cloudy.png);
+            background-size: cover;
+        }
+
+        .cityField {
+            width: 250px;
+            height: 50px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0);
+            border-bottom: 2px solid #fff;
+            outline: none;
+            font-family: Montserrat;
+            color: #fff;
+            font-size: 24px;
+            position: relative;
+        }
+
+        .checkWeather {
+            width: 150px;
+            height: 50px;
+            background-color: blanchedalmond;
+            border: none;
+            color: #000;
+            font-family: Montserrat;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .plText {
+            color: #fff;
+            font-family: Montserrat;
+            font-size: 22px;
+            position: relative;
+            top: 40px;
+            transition: 0.2s;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="wrap">
+        <div class="card">
+            <div class="ico"></div>
+
+            <div class="placeHolder">
+                <div class="plText" id="plText">Введи місто</div>
+                <input type="text" id="cityField" class="cityField">
+            </div>
+
+
+            <button id="checkWeather" class="checkWeather">Подивитись погоду</button>
+            <div class="temp" id="temp"></div>
+        </div>
+    </div>
+
+
+    <script>
+        let key = '44698139a4c481d17cb6dbc1fc43ae58';
+
+        checkWeather.onclick = function() {
+            let city = cityField.value;
+            fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + key)
+                .then(response => {
+                    return (response.json());
+                })
+                .then(data => {
+                    temp.innerText = (data.main.temp - 273).toFixed(2) + '°C';
+                    cityField.value = '';
+                })
+        }
+
+
+        cityField.onclick = function() {
+            plText.style.top = '10px';
+            plText.style.fontSize = '15px';
+        }
+
+
+        cityField.onkeydown = function(e) {
+            if (e.keyCode == 13) {
+                let city = cityField.value;
+                fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + key)
+                    .then(response => {
+                        return (response.json());
+                    })
+                    .then(data => {
+                        temp.innerText = (data.main.temp - 273).toFixed(2) + '°C';
+                        cityField.value = '';
+                    })
+            }
+
+        }
+    </script>
+
+</body></html>
