@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MonoBank</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .wrapp1{
+            position: relative;
+            overflow: hidden;
+            margin-top: -65px;
+            width: 100%;
+            height: 100vh;
+        }
+        .wrapp2{
+            position: relative;
+            overflow: hidden;
+            margin-top: -65px;
+            width: 100%;
+            height: 100vh;
+            display: none;
+        }
+
+        .wrapp3{
+            position: relative;
+            overflow: hidden;
+            margin-top: -65px;
+            width: 100%;
+            height: 100vh;
+            display: none;
+        }
+        .head{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .box1{
+            width: 232px;
+            height: 40px;
+            background-color: #ffecedd8;
+            color: #fa5255;
+            position: relative;
+            border-top-left-radius: 30px;
+            border-end-start-radius: 30px;
+            font-weight: bold;
+            margin-top: 25px;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.8s;
+            z-index: 2;
+        }
+        .box2{
+            width: 232px;
+            height: 40px;
+            background-color: #ffecedd8;
+            color: #fa5255;
+            position: relative;
+            margin-top: 25px;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.8s;
+            z-index: 2;
+        }
+        .box3{
+            width: 232px;
+            height: 40px;
+            background-color: #ffecedd8;
+            color: #fa5255;
+            position: relative;
+            border-top-right-radius: 30px;
+            border-end-end-radius: 30px;
+            margin-top: 25px;
+            display: flex;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.8s;
+            z-index: 2;
+        }
+        .active, .box1:hover {
+            background-color: #fa5255;
+            color: #fff;
+            transition: 0.8s;
+        }
+        .active, .box2:hover {
+            background-color: #fa5255;
+            color: #fff;
+            transition: 0.8s;
+        }
+        .active, .box3:hover {
+            background-color: #fa5255;
+            color: #fff;
+            transition: 0.8s;
+        }
+        .areaLeft1{
+            width: 50%;
+            height: 100vh;
+        }
+        .areaRight1{
+            position:absolute;
+            width:50%;
+            height:100vh;
+            top:0;
+            left:50%;
+            z-index: 1;
+        }
+        .areaLeft2{
+            width: 50%;
+            height: 100vh;
+            background-color: black;
+        }
+        .areaRight2{
+            position:absolute;
+            width:50%;
+            height:100vh;
+            top:0;
+            left:50%;
+            background-color: pink;
+            z-index: 1;
+        }
+        .areaLeft3{
+            width: 50%;
+            height: 100vh;
+            background-color: green;
+        }
+        .areaRight3{
+            position:absolute;
+            width:50%;
+            height:100vh;
+            top:0;
+            left:50%;
+            background-color: red;
+            z-index: 1;
+        }
+        #iphone{
+            margin-left: 55%;
+            margin-top: 25%;
+        }
+        #info{
+            position: absolute;
+            top: 150px;
+            width: 100%;
+            height: 100vh;
+            -webkit-animation: slide 0.8s forwards;
+            -webkit-animation-delay: 0s;
+            animation: slide 0.8s forwards;
+            animation-delay: 0s;
+        }
+        #opa{
+            -webkit-animation: opa 0.8s forwards;
+            -webkit-animation-delay: -0.3s;
+            animation: opa 0.8s forwards;
+            animation-delay: -0.3s;
+        }
+        @-webkit-keyframes slide {
+            100% { top: 0; }
+        }
+
+        @keyframes slide {
+            100% { top: 0; }
+        }
+        @-webkit-keyframes opa {
+            70% { opacity: 0.7; }
+            80% { opacity: 0.8; }
+            90% { opacity: 0.9; }
+            100% { opacity: 1; }
+        }
+        @keyframes opa {
+            70% { opacity: 0.7; }
+            80% { opacity: 0.8; }
+            90% { opacity: 0.9; }
+            100% { opacity: 1; }
+        }
+        .ico1{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-left: -55px;
+            margin-top: 35%;
+            background-color: #bd73e5;
+        }
+        .ico2{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-left: -55px;
+            margin-top: 35%;
+            background-color: #7279f2;
+        }
+        .ico3{
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            margin-left: -55px;
+            margin-top: 35%;
+            background-color: #ffa54f;
+        }
+        .ico1-1{
+            width: 40px;
+            height: 40px;
+            margin-left: 15px;
+            margin-top: 15px;
+        }
+        .title{
+            margin: 35px;
+            margin-left: -55px;
+            font-size: 160%;
+            font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: rgba(41, 41, 41, 0.900);
+        }
+        .txtWrapp1{
+            width: 490px;
+            height: 120px;
+            margin: 25px;
+            margin-left: -55px;
+            font-size: 115%;
+            font-weight: 500;
+            color: rgb(59, 59, 59);
+        }
+        .txtWrapp2{
+            width: 480px;
+            height: 96px;
+            margin: 25px;
+            margin-left: -55px;
+            font-size: 115%;
+            font-weight: 500;
+            color: rgb(59, 59, 59);
+        }
+        .txtWrapp3{
+            width: 480px;
+            height: 96px;
+            margin: 25px;
+            margin-left: -55px;
+            font-size: 115%;
+            font-weight: 500;
+            color: rgb(59, 59, 59);
+        }
+    </style>
+</head>
+<body>
+    <div class="head" id="head">
+        <div class="block box1 active" id="box1">ПЛАТЕЖІ</div>
+        <div class="block box2" id="box2">ВИПИСКА</div>
+        <div class="block box3" id="box3">НАЛАШТУВАННЯ КАРТКИ</div>
+    </div>
+    <div class="wrapp1" id="wrapp1">
+        <div id="info">
+            <div id="opa">
+                <div class="areaLeft1">
+                    <img id="iphone" src="home-payments-iphone-uk.webp">
+                </div>
+                <div class="areaRight1">
+                    <div class="ico1">
+                        <img class="ico1-1" src="valid.png">
+                    </div>
+                    <h3 class="title">– а моно безкоштовні перекази?<br>
+                    – mono</h3>
+                    <p class="txtWrapp1">Поповнення картки monobank — безкоштовно! 
+                        А далі поповнюйте мобільний, сплачуйте комунальні та 
+                        інші послуги без будь-якої комісії.Навіть за рахунок
+                        кредитних коштів! Переказуйте гроші своїм контактам 
+                        за один клік - це простіше, ніж ви можете собі уявити</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapp2" id="wrapp2">
+        <div id="info">
+            <div id="opa">
+                <div class="areaLeft1">
+                    <img id="iphone" src="home-pfm-iphone-uk.webp">
+                </div>
+                <div class="areaRight1">
+                    <div class="ico2">
+                        <img class="ico1-1" src="payment.png">
+                    </div>
+                    <h3 class="title">– а моно переглядати витрати за карткою?<br>
+                    – mono</h3>
+                    <p class="txtWrapp2">Завжди хотіли перевірити, який відсоток ваших 
+                        витрат припадає на нестримні веселощі? Тепер це просто. 
+                        Користуйтеся карткою monobank, і ви завжди зможете бачити
+                        свої витрати в красивому й структурованому вигляді</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapp3" id="wrapp3">
+        <div id="info">
+            <div id="opa">
+                <div class="areaLeft1">
+                    <img id="iphone" src="home-settings-iphone-uk.webp">
+                </div>
+                <div class="areaRight1">
+                    <div class="ico3">
+                        <img class="ico1-1" src="service.png">
+                    </div>
+                    <h3 class="title">– а моно керування карткою в одному місці?<br>
+                    – mono</h3>
+                    <p class="txtWrapp3">Установлюйте самостійно будь-які ліміти, 
+                        зокрема для запиту PIN-коду, коли купуєте. Не можете знайти 
+                        картку? Заблокуйте її на якийсь час, далі від гріха. Змінюйте
+                        ПІН просто в додатку, без походів до банкомата</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        box1.onclick = function(){
+            wrapp1.style.display = 'block';
+            wrapp2.style.display = 'none';
+            wrapp3.style.display = 'none'; 
+        }
+        box2.onclick = function(){
+            wrapp1.style.display = 'none';
+            wrapp2.style.display = 'block';
+            wrapp3.style.display = 'none';
+        }
+        box3.onclick = function(){
+            wrapp1.style.display = 'none';
+            wrapp2.style.display = 'none';
+            wrapp3.style.display = 'block';
+        }
+        let header = document.getElementById("head");
+        let btns = header.getElementsByClassName("block");
+        for (let i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+        let current = document.getElementsByClassName("active");
+        current[0].className = current[0].className.replace(" active", "");
+        this.className += " active";
+        });
+        }
+    </script>
+</body>
+</html>
